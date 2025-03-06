@@ -8,13 +8,11 @@
     "node": "^20.12.1",
     "npm": "^10.5.0"
   },
-  "scripts": {
+ "scripts": {
   "dev": "nodemon src/index.js",
-  "start": "npx sequelize-cli db:migrate && node src/index.js",
-  "build": "next build",
-  "format": "npx prettier . --write",
-  "check": "npx eslint . --fix",
-  "test": "jest; npx mocha test/api.test.cjs"
+  "start": "npx sequelize-cli db:migrate --config config/config.cjs && node src/index.js",
+  "migrate": "npx sequelize-cli db:migrate --config config/config.cjs",
+  "rollback": "npx sequelize-cli db:migrate:undo --config config/config.cjs"
 },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.732.0",
