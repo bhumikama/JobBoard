@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // reactStrictMode: false,   // Add this line
+  output: "export",
   images: {
     unoptimized: false,
     domains: ["upskillpro.s3.eu-north-1.amazonaws.com"],
