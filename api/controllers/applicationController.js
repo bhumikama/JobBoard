@@ -49,7 +49,6 @@ const createApplication = async (req, res) => {
       message: "Application created successfully",
       application: newApplication,
     });
-    console.log("Application submitted :", newApplication);
   } catch (error) {
     console.error("Error applying for a job:", error);
     res.status(500).json({ error: "Failed to apply for a job" });
@@ -88,7 +87,7 @@ const getAllAppliedJobs = async (req, res) => {
         .status(404)
         .json({ message: "You have not applied for any job yet" });
     }
-    console.log("all applied jobs :", applications);
+
     res.status(200).json(applications);
   } catch (error) {
     console.error("Error fetching jobs", error);
@@ -140,7 +139,7 @@ const updateApplication = async (req, res) => {
   const jobId = req.params.id;
   const { applicantId } = req.params;
   const { status } = req.body;
-  console.log("jobID ;", jobId);
+
   if (!jobId || !applicantId) {
     return res
       .status(403)
@@ -194,5 +193,5 @@ export {
   getAllAppliedJobs,
   updateApplication,
   getAllApplicantsByJobID,
-  deleteJob
+  deleteJob,
 };

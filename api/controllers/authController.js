@@ -24,16 +24,16 @@ export const loginHandler = async (req, res) => {
 
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 60 * 60 * 1000,
       path: "/",
     });
 
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: "/",
     });
@@ -105,8 +105,6 @@ export const refreshTokenHandler = async (req, res) => {
   try {
     // Verify Refresh Token
     const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN);
-    console.log("Decoded token:", decoded);
-
     const user = await User.findByPk(decoded.sub);
 
     if (!user) {
@@ -120,17 +118,16 @@ export const refreshTokenHandler = async (req, res) => {
     // Set new refresh  and access tokens in HttpOnly cookie
     res.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", 
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
       path: "/",
     });
 
-   
     res.cookie("accessToken", newAccessToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 60 * 60 * 1000, // 1 hour
       path: "/",
     });
