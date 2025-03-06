@@ -30,10 +30,6 @@ const Login = () => {
     try {
       await loginMutate.mutateAsync(formData);
       console.log("Logged in successfully!");
-      // Set cookies
-      // Cookies.set("userName", user.name);
-      // Cookies.set("userRole", user.role);
-      // Cookies.set("userEmail", user.email);
     } catch (error) {
       console.error("Error during login process:", error);
       toast.error("Login failed. Please try again.");

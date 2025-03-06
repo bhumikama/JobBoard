@@ -25,7 +25,6 @@ const loginUser = async (credentials) => {
   }
 
   const data = await apiResponse.json();
-  console.log("User fetched:", data);
   return data;
 };
 

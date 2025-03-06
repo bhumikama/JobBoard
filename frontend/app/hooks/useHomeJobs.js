@@ -3,8 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
 const fetchHomeJobs = async () => {
-  console.log("Fetching home jobs...");
-
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/jobs?limit=5&order=DESC&sortBy=createdAt`,
@@ -25,7 +23,7 @@ const fetchHomeJobs = async () => {
     }
 
     const data = await response.json();
-    console.log("Jobs fetched:", data.jobs);
+
     return data.jobs || [];
   } catch (error) {
     console.error("Error during fetchHomeJobs:", error);

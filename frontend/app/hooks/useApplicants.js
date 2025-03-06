@@ -8,7 +8,6 @@ export const useApplicants = (jobId) => {
   return useQuery({
     queryKey: ["applicants", jobId],
     queryFn: async () => {
-      console.log("fetching from API.....");
       const response = await makeApiRequest(
         `${process.env.NEXT_PUBLIC_API_URL}/api/jobs/${jobId}/applicants`
       );
@@ -21,9 +20,9 @@ export const useApplicants = (jobId) => {
         toast.error(error.message || "Failed to fetch applicants");
       }
     },
-    staleTime: 5 * 60 * 1000, 
-    cacheTime: 30 * 60 * 1000, 
-    refetchOnWindowFocus: false, 
-    refetchOnMount: false, 
+    staleTime: 5 * 60 * 1000,
+    cacheTime: 30 * 60 * 1000,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
 };

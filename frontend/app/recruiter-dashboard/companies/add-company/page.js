@@ -70,7 +70,7 @@ const CreateCompany = () => {
     try {
       const imageKey = await handleFileUpload(image);
       const companyName = capitalizeFirstLetter(name);
-      console.log("companyName after capitalization:", companyName);
+
       addCompany(
         { name: companyName, website, location, imageKey },
         {
