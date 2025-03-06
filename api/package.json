@@ -9,13 +9,13 @@
     "npm": "^10.5.0"
   },
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "start": "node src/index.js",
-    "build": "next build",
-    "format": "npx prettier . --write",
-    "check": "npx eslint . --fix",
-    "test": "jest; npx mocha test/api.test.cjs"
-  },
+  "dev": "nodemon src/index.js",
+  "start": "npx sequelize-cli db:migrate && node src/index.js",
+  "build": "next build",
+  "format": "npx prettier . --write",
+  "check": "npx eslint . --fix",
+  "test": "jest; npx mocha test/api.test.cjs"
+},
   "dependencies": {
     "@aws-sdk/client-s3": "^3.732.0",
     "aws-sdk": "^2.1692.0",
